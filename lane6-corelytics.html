@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lane6 x Corelytics — Partnership Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ─── Reset & Base ─────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #00D4C8;
+    --teal-dim: rgba(0, 212, 200, 0.12);
+    --teal-glow: 0 0 24px rgba(0, 212, 200, 0.35);
+    --teal-glow-lg: 0 0 60px rgba(0, 212, 200, 0.2);
+    --bg: #08090A;
+    --bg2: #0E1012;
+    --bg3: #141618;
+    --border: rgba(0, 212, 200, 0.18);
+    --border-dim: rgba(255,255,255,0.06);
+    --text: #E8EAED;
+    --text-muted: #8A9099;
+    --lane6-tag: #00D4C8;
+    --core-tag: #6C8EFF;
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ─── Grid Texture ──────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 212, 200, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 200, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,212,200,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── Nav ───────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,9,10,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-dim);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    text-transform: uppercase;
+  }
+
+  .nav-logo span { color: var(--text-muted); font-weight: 400; }
+
+  .nav-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--bg3);
+    border: 1px solid var(--border-dim);
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .nav-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 7px 18px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-tab:hover { color: var(--text); }
+
+  .nav-tab.active {
+    background: var(--teal-dim);
+    color: var(--teal);
+    border: 1px solid var(--border);
+    box-shadow: var(--teal-glow);
+  }
+
+  .nav-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border-dim);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+
+  /* ─── Pages ─────────────────────────────────────── */
+  .page { display: none; position: relative; z-index: 1; }
+  .page.active { display: block; }
+
+  /* ─── Corner Brackets ───────────────────────────── */
+  .bracket {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--teal);
+    border-style: solid;
+    opacity: 0.5;
+  }
+  .bracket.tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
+  .bracket.tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+  .bracket.bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+  .bracket.br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+  /* ─── PAGE 1 ────────────────────────────────────── */
+  .p1-hero {
+    padding: 72px 60px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  h1 em { font-style: normal; color: var(--teal); }
+
+  .p1-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 56px;
+  }
+
+  /* ─── Ownership Banner ──────────────────────────── */
+  .ownership-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px 20px;
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    align-items: center;
+  }
+
+  .own-label {
+    padding: 10px 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .own-label.lane6 {
+    background: rgba(0,212,200,0.1);
+    color: var(--teal);
+    border: 1px solid rgba(0,212,200,0.25);
+    box-shadow: var(--teal-glow);
+  }
+
+  .own-label.core {
+    background: rgba(108,142,255,0.1);
+    color: #6C8EFF;
+    border: 1px solid rgba(108,142,255,0.25);
+    box-shadow: 0 0 24px rgba(108,142,255,0.2);
+  }
+
+  .own-bridge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* ─── Pipeline ──────────────────────────────────── */
+  .pipeline-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px 80px;
+  }
+
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  /* connecting line */
+  .pipeline::before {
+    content: '';
+    position: absolute;
+    top: 52px;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: linear-gradient(90deg,
+      rgba(0,212,200,0.6) 0%,
+      rgba(0,212,200,0.6) 52%,
+      rgba(255,255,255,0.15) 52%,
+      rgba(255,255,255,0.15) 55%,
+      rgba(108,142,255,0.6) 55%,
+      rgba(108,142,255,0.6) 100%
+    );
+  }
+
+  .stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 8px;
+    position: relative;
+  }
+
+  .stage-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .stage.lane6 .stage-icon-wrap {
+    background: rgba(0,212,200,0.12);
+    border: 1.5px solid rgba(0,212,200,0.4);
+    box-shadow: 0 0 20px rgba(0,212,200,0.25);
+  }
+
+  .stage.handoff .stage-icon-wrap {
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px rgba(255,255,255,0.05);
+  }
+
+  .stage.corelytics .stage-icon-wrap {
+    background: rgba(108,142,255,0.12);
+    border: 1.5px solid rgba(108,142,255,0.4);
+    box-shadow: 0 0 20px rgba(108,142,255,0.25);
+  }
+
+  .stage-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .stage-num {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stage.lane6 .stage-num { background: var(--teal); color: #000; }
+  .stage.handoff .stage-num { background: #555; color: #fff; }
+  .stage.corelytics .stage-num { background: #6C8EFF; color: #fff; }
+
+  .stage-card {
+    width: 100%;
+    border-radius: 10px;
+    padding: 16px 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stage.lane6 .stage-card {
+    background: rgba(0,212,200,0.05);
+    border: 1px solid rgba(0,212,200,0.15);
+  }
+
+  .stage.handoff .stage-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.15);
+  }
+
+  .stage.corelytics .stage-card {
+    background: rgba(108,142,255,0.05);
+    border: 1px solid rgba(108,142,255,0.15);
+  }
+
+  .stage-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .stage.lane6 .stage-tag { color: var(--teal); }
+  .stage.handoff .stage-tag { color: var(--text-muted); }
+  .stage.corelytics .stage-tag { color: #6C8EFF; }
+
+  .stage-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .stage-body {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* arrow connector between stages */
+  .stage::after {
+    content: '›';
+    position: absolute;
+    right: -10px;
+    top: 26px;
+    font-size: 18px;
+    color: rgba(255,255,255,0.15);
+    z-index: 3;
+    transform: translateY(-50%);
+  }
+
+  .stage:last-child::after { display: none; }
+
+  /* ─── Commission Banner ─────────────────────────── */
+  .commission-banner {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 60px;
+  }
+
+  .comm-box {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--teal-dim);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    box-shadow: var(--teal-glow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comm-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,212,200,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .comm-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .comm-text h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+
+  .comm-text p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .comm-tag-wrap {
+    margin-left: auto;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .comm-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    border: 1px solid rgba(0,212,200,0.3);
+    border-radius: 5px;
+    padding: 5px 12px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .comm-affiliate {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── Legend ────────────────────────────────────── */
+  .legend {
+    max-width: 1200px;
+    margin: 0 auto 48px;
+    padding: 0 60px;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .legend-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-dot.lane6 { background: var(--teal); box-shadow: 0 0 6px var(--teal); }
+  .legend-dot.handoff { background: #555; }
+  .legend-dot.corelytics { background: #6C8EFF; box-shadow: 0 0 6px #6C8EFF; }
+
+  /* ─── PAGE 2 ────────────────────────────────────── */
+  .p2-hero {
+    padding: 72px 60px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .p2-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .p2-rule {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--bg3);
+    border: 1px solid var(--border-dim);
+    border-left: 3px solid var(--teal);
+    border-radius: 4px;
+    padding: 10px 16px;
+    max-width: 660px;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .p2-rule strong { color: var(--teal); font-weight: 600; }
+
+  /* ─── Scenario Cards ─────────────────────────────── */
+  .scenarios-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .scenario-card {
+    border-radius: 12px;
+    border: 1px solid var(--border-dim);
+    background: var(--bg2);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .scenario-card:hover {
+    border-color: var(--border);
+    box-shadow: var(--teal-glow);
+  }
+
+  .scenario-card .bracket { opacity: 0.3; }
+  .scenario-card:hover .bracket { opacity: 0.6; }
+
+  .card-header {
+    padding: 22px 24px 18px;
+    border-bottom: 1px solid var(--border-dim);
+    background: rgba(255,255,255,0.02);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .card-letter {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--teal);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .card-header-text { flex: 1; }
+
+  .card-scenario-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text);
+  }
+
+  .card-body {
+    padding: 22px 24px;
+  }
+
+  .field-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .field {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .field-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: 2px;
+    line-height: 1.4;
+  }
+
+  .field-value {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .field-value .pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-right: 4px;
+    margin-bottom: 2px;
+  }
+
+  .pill.lane6 { background: rgba(0,212,200,0.1); color: var(--teal); border: 1px solid rgba(0,212,200,0.2); }
+  .pill.core { background: rgba(108,142,255,0.1); color: #6C8EFF; border: 1px solid rgba(108,142,255,0.2); }
+  .pill.tracked { background: rgba(34,197,94,0.1); color: #4ADE80; border: 1px solid rgba(34,197,94,0.2); }
+  .pill.auto { background: rgba(251,191,36,0.1); color: #FBBF24; border: 1px solid rgba(251,191,36,0.2); }
+
+  .card-footer {
+    padding: 14px 24px;
+    border-top: 1px solid var(--border-dim);
+    background: rgba(0,212,200,0.04);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-icon { font-size: 13px; }
+
+  .footer-text {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  .footer-text strong { color: var(--teal); font-weight: 600; }
+
+  /* ─── Divider ───────────────────────────────────── */
+  .section-divider {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    padding: 0 60px;
+    height: 1px;
+    background: var(--border-dim);
+  }
+
+  /* ─── Responsive ─────────────────────────────────── */
+  @media (max-width: 960px) {
+    .pipeline { grid-template-columns: repeat(3, 1fr); }
+    .pipeline::before { display: none; }
+    .stage::after { display: none; }
+    .ownership-bar { display: none; }
+    .scenarios-grid { grid-template-columns: 1fr; }
+    .p1-hero, .p2-hero { padding: 48px 24px 32px; }
+    .pipeline-wrap, .commission-banner, .legend, .scenarios-grid { padding-left: 24px; padding-right: 24px; }
+    nav { padding: 0 20px; }
+    .comm-box { flex-direction: column; align-items: flex-start; }
+    .comm-tag-wrap { margin-left: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .pipeline { grid-template-columns: 1fr; }
+    .field { grid-template-columns: 1fr; }
+    .field-label { padding-top: 0; }
+    h1 { font-size: 28px; }
+    .nav-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">Lane6 <span>×</span> Corelytics</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage(1, this)">Partnership Overview</button>
+    <button class="nav-tab" onclick="showPage(2, this)">Handoff Scenarios</button>
+  </div>
+  <div class="nav-badge">Confidential</div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 1 — PARTNERSHIP OVERVIEW
+══════════════════════════════════════════════════ -->
+<section class="page active" id="page1">
+
+  <div class="p1-hero">
+    <div class="eyebrow">Partnership Overview</div>
+    <h1>Lane6 <em>×</em> Corelytics<br>How the Pipeline Works</h1>
+    <p class="p1-subtitle">Lane6 sources, qualifies, and warms every RIA lead end-to-end. Corelytics executes the demo and closes. Commission is triggered only on a confirmed close — tracked automatically via affiliate tag <strong style="color:var(--teal); font-family:monospace;">LANE6</strong>.</p>
+  </div>
+
+  <!-- Ownership Banner -->
+  <div class="ownership-bar">
+    <div class="own-label lane6">Lane6 Owns &nbsp;—&nbsp; Stages 1–3</div>
+    <div class="own-bridge">Handoff</div>
+    <div class="own-label core">Corelytics Executes &nbsp;—&nbsp; Stages 5–6</div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span class="legend-label">Legend:</span>
+    <div class="legend-item"><div class="legend-dot lane6"></div> Lane6 Action</div>
+    <div class="legend-item"><div class="legend-dot handoff"></div> Handoff Transition</div>
+    <div class="legend-item"><div class="legend-dot corelytics"></div> Corelytics Action</div>
+  </div>
+
+  <!-- Pipeline -->
+  <div class="pipeline-wrap">
+    <div class="pipeline">
+
+      <!-- Stage 1 -->
+      <div class="stage lane6">
+        <div class="stage-icon-wrap">
+          <span class="stage-icon">🎯</span>
+          <div class="stage-num">1</div>
+        </div>
+        <div class="stage-card">
+          <span class="stage-tag">Lane6</span>
+          <div class="stage-title">Lead Generation</div>
+          <div class="stage-body">Outbound outreach, content funnels, and CRM automation surface qualified RIA prospects. The lead belongs to Lane6 from first touch.</div>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage lane6">
+        <div class="stage-icon-wrap">
+          <span class="stage-icon">🔍</span>
+          <div class="stage-num">2</div>
+        </div>
+        <div class="stage-card">
+          <span class="stage-tag">Lane6</span>
+          <div class="stage-title">Qualification</div>
+          <div class="stage-body">Filtered by AUM range ($50M–$500M), ERP fit, and pain point signal. Unqualified leads stay in nurture. Qualified leads advance.</div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage lane6">
+        <div class="stage-icon-wrap">
+          <span class="stage-icon">🔥</span>
+          <div class="stage-num">3</div>
+        </div>
+        <div class="stage-card">
+          <span class="stage-tag">Lane6</span>
+          <div class="stage-title">Nurture & Warm-Up</div>
+          <div class="stage-body">Automated follow-up sequences, re-engagement workflows, and intent tracking run until the lead is demo-ready.</div>
+        </div>
+      </div>
+
+      <!-- Stage 4 — Handoff -->
+      <div class="stage handoff">
+        <div class="stage-icon-wrap">
+          <span class="stage-icon">🤝</span>
+          <div class="stage-num">4</div>
+        </div>
+        <div class="stage-card">
+          <span class="stage-tag">Handoff</span>
+          <div class="stage-title">Demo Handoff</div>
+          <div class="stage-body">Lane6 delivers a warm, pre-qualified lead with full context — pain point, company size, ERP, and intent score. Lane6's active role pauses here.</div>
+        </div>
+      </div>
+
+      <!-- Stage 5 -->
+      <div class="stage corelytics">
+        <div class="stage-icon-wrap">
+          <span class="stage-icon">📊</span>
+          <div class="stage-num">5</div>
+        </div>
+        <div class="stage-card">
+          <span class="stage-tag">Corelytics</span>
+          <div class="stage-title">Demo & Close</div>
+          <div class="stage-body">Corelytics runs the product demo and closes the lead onto one of their programs. Lane6 is not present on the call.</div>
+        </div>
+      </div>
+
+      <!-- Stage 6 -->
+      <div class="stage corelytics">
+        <div class="stage-icon-wrap">
+          <span class="stage-icon">💰</span>
+          <div class="stage-num">6</div>
+        </div>
+        <div class="stage-card">
+          <span class="stage-tag">Commission Trigger</span>
+          <div class="stage-title">Lane6 Compensated</div>
+          <div class="stage-body">On confirmed close, Lane6's commission is triggered automatically. Tracked via affiliate tag <span style="font-family:monospace;color:var(--teal);">LANE6</span>. No close = no commission.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Commission Banner -->
+  <div class="commission-banner">
+    <div class="comm-box">
+      <div class="comm-icon">⚡</div>
+      <div class="comm-text">
+        <h3>Commission-Only Compensation Model</h3>
+        <p>Lane6 is compensated exclusively on confirmed closed deals. There are no retainers, no lead fees, and no upfront costs to Corelytics. Lane6's incentive is fully aligned with Corelytics' revenue outcome.</p>
+      </div>
+      <div class="comm-tag-wrap">
+        <div class="comm-tag">Affiliate Tag</div>
+        <div class="comm-affiliate">?affiliate=LANE6</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 2 — HANDOFF SCENARIOS
+══════════════════════════════════════════════════ -->
+<section class="page" id="page2">
+
+  <div class="p2-hero">
+    <div class="eyebrow">Deep Dive</div>
+    <h1>What Handoff<br><em>Actually</em> Looks Like</h1>
+    <p class="p2-subtitle">Four scenarios covering how Lane6 delivers a qualified lead to Corelytics — from fully self-serve to high-touch coordinated intros.</p>
+    <div class="p2-rule">
+      <strong>Standing rule across all scenarios:</strong> Lane6 owns the lead and the relationship through handoff. Corelytics enters at the demo stage only. Commission tracks to Lane6 on close, regardless of how many nurture cycles the lead required.
+    </div>
+  </div>
+
+  <div class="scenarios-grid">
+
+    <!-- Scenario A -->
+    <div class="scenario-card">
+      <div class="bracket tl"></div>
+      <div class="bracket tr"></div>
+      <div class="bracket bl"></div>
+      <div class="bracket br"></div>
+      <div class="card-header">
+        <div class="card-letter">A</div>
+        <div class="card-header-text">
+          <span class="card-scenario-tag">Scenario A</span>
+          <div class="card-title">Warm Intro via Email</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field-grid">
+          <div class="field">
+            <div class="field-label">Trigger</div>
+            <div class="field-value">Lead completes the Exit-Ready Quiz or Financial Plan Scorecard on a Lane6-built tool and meets qualification criteria.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Lane6 Action</div>
+            <div class="field-value">Sends a personalized intro email to Alec or Steve at Corelytics with full lead context embedded — pain point, AUM range, ERP environment, and intent score.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Handoff Method</div>
+            <div class="field-value">Direct email introduction with structured context brief.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Corelytics Entry</div>
+            <div class="field-value">Picks up from the intro email. Lane6 retains ownership of the contact record in CRM until close is confirmed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="footer-icon">💡</div>
+        <div class="footer-text"><strong>Commission tracking:</strong> Lead record flagged with Lane6 source at creation. Commission triggers automatically on close confirmation.</div>
+      </div>
+    </div>
+
+    <!-- Scenario B -->
+    <div class="scenario-card">
+      <div class="bracket tl"></div>
+      <div class="bracket tr"></div>
+      <div class="bracket bl"></div>
+      <div class="bracket br"></div>
+      <div class="card-header">
+        <div class="card-letter">B</div>
+        <div class="card-header-text">
+          <span class="card-scenario-tag">Scenario B</span>
+          <div class="card-title">Self-Serve Demo Registration</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field-grid">
+          <div class="field">
+            <div class="field-label">Trigger</div>
+            <div class="field-value">Lead clicks through a Lane6 nurture touchpoint and self-registers at <span style="font-family:monospace;font-size:12px;color:var(--teal)">dashboard.corelytics.com/?mode=register&affiliate=LANE6</span>.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Lane6 Action</div>
+            <div class="field-value">Flags the lead in CRM with source attribution, intent score, and full touchpoint history prior to registration.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Handoff Method</div>
+            <div class="field-value">Self-directed — lead arrives at Corelytics' registration flow via tagged Lane6 link.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Corelytics Entry</div>
+            <div class="field-value">Works the inbound registration. All context is available via CRM flag.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="footer-icon">🔗</div>
+        <div class="footer-text"><strong>Commission tracking:</strong> <span class="pill auto">Automatic</span> via affiliate tag <span style="font-family:monospace;color:var(--teal)">LANE6</span> embedded in registration URL. No manual reconciliation needed.</div>
+      </div>
+    </div>
+
+    <!-- Scenario C -->
+    <div class="scenario-card">
+      <div class="bracket tl"></div>
+      <div class="bracket tr"></div>
+      <div class="bracket bl"></div>
+      <div class="bracket br"></div>
+      <div class="card-header">
+        <div class="card-letter">C</div>
+        <div class="card-header-text">
+          <span class="card-scenario-tag">Scenario C</span>
+          <div class="card-title">High-Intent Coordinated Intro Call</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field-grid">
+          <div class="field">
+            <div class="field-label">Trigger</div>
+            <div class="field-value">Lead shows strong multi-touchpoint signal across Lane6 sequences but has not self-booked. Intent score warrants direct coordination.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Lane6 Action</div>
+            <div class="field-value">Briefs Corelytics on the lead, coordinates timing, and facilitates a warm intro call. Lane6 may join the first 2–3 minutes to hand context directly, then exits.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Handoff Method</div>
+            <div class="field-value">Live facilitated intro with verbal context transfer. Lead ownership formally transfers at the moment Lane6 exits the call.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Corelytics Entry</div>
+            <div class="field-value">Receives the lead live with Lane6's brief. Continues into demo and close independently.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="footer-icon">🎙️</div>
+        <div class="footer-text"><strong>Commission tracking:</strong> Lead flagged in CRM prior to call. Source attribution confirmed at handoff. Commission triggers on close.</div>
+      </div>
+    </div>
+
+    <!-- Scenario D -->
+    <div class="scenario-card">
+      <div class="bracket tl"></div>
+      <div class="bracket tr"></div>
+      <div class="bracket bl"></div>
+      <div class="bracket br"></div>
+      <div class="card-header">
+        <div class="card-letter">D</div>
+        <div class="card-header-text">
+          <span class="card-scenario-tag">Scenario D</span>
+          <div class="card-title">Stalled Lead Re-Engagement</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="field-grid">
+          <div class="field">
+            <div class="field-label">Trigger</div>
+            <div class="field-value">Lead went cold post-handoff or never converted from the nurture sequence. Inactivity window exceeded threshold.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Lane6 Action</div>
+            <div class="field-value">Pulls the lead back into an automated re-engagement sequence, re-qualifies against current criteria, and monitors for refreshed intent signal before re-presenting.</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Handoff Method</div>
+            <div class="field-value">Re-handoff occurs only after intent is confirmed again — same handoff protocols apply (email intro, self-serve, or coordinated call).</div>
+          </div>
+          <div class="field">
+            <div class="field-label">Corelytics Entry</div>
+            <div class="field-value">Re-presented to Corelytics as a re-qualified lead with updated context and refreshed intent score.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="footer-icon">♻️</div>
+        <div class="footer-text"><strong>Commission tracking:</strong> <span class="pill tracked">Preserved</span> Regardless of re-engagement cycles, commission tracks to Lane6 on final confirmed close via original lead attribution.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function showPage(num, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('page' + num).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
